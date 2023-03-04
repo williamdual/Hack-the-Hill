@@ -14,7 +14,7 @@ public class FishingRod : MonoBehaviour
     public LineRenderer lineR;
     Ray ray;
     RaycastHit raycastHit;
-    GameObject clickedObj;
+    GameObject clickedObj = null;
 
     // Start is called before the first frame update
     void Start()
@@ -42,9 +42,12 @@ public class FishingRod : MonoBehaviour
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out raycastHit, 100f))
             {
-                if (raycastHit.transform != null)
+                if (raycastHit.transform.gameObject.CompareTag("MutantFish"))
                 {
                     clickedObj = raycastHit.transform.gameObject; 
+                }
+                else{
+                    clickedObj = null;
                 }
             }
         }
@@ -56,7 +59,9 @@ public class FishingRod : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(0) && dragging) //left mouse button reelesed
         {
-            throwObject();
+            if(clickedObj != null){
+                throwObject();
+            }
             dragging = false;
         }
     }
@@ -66,7 +71,9 @@ public class FishingRod : MonoBehaviour
         if(clickedObj.CompareTag("MutantFish"))
         {
             float power = Math.Abs(dragStart.x - dragEnd.x) + Math.Abs(dragStart.y - dragEnd.y);
+            if(clickedObj != null){
             clickedObj.GetComponent<MutantFish>(); //Add .throwFish(dragEnd, power) or whatever to the end
+            }
         }
         //throw the game object along the directon vector created from dragstart to dragend if it can be thrown, else losen it if its throwable but stuck, else nothing
     }
