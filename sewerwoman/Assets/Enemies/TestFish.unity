@@ -219,6 +219,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 1475178739797555012, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 1475178739797555013, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
       propertyPath: m_IsTrigger
       value: 0
