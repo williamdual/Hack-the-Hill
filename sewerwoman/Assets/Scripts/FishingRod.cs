@@ -20,18 +20,24 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Our rod casting stuff
         if(Input.GetMouseButtonDown(0) && !dragging) //left mouse button clicked
         {
-            dragStart = Input.mousePosition;
+            dragStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            dragging = true;
+            Debug.Log("Mouse clicked");
             lineR.SetPosition(0, dragStart);
         }
         if(dragging)
         {
-            lineR.SetPosition(1, Input.mousePosition);
+            lineR.SetPosition(1, Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
         if(Input.GetMouseButtonUp(0) && dragging) //left mouse button reelesed
         {
-            
+            Debug.Log("Mouse up");
+            dragEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
+
+   
 }
