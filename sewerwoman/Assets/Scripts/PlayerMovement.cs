@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+    GameObject player;
     public Rigidbody2D rb;
 
     Vector2 movement;
     void Start()
     {
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     // Update is called once per frame
