@@ -219,6 +219,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1475178739797555013, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1475178739797555015, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
       propertyPath: m_Name
       value: Player
@@ -328,6 +332,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 205531609}
+    - target: {fileID: 6305617465573454065, guid: a30d65b0164583a48a1916a2f830e332, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8292623079158368396, guid: a30d65b0164583a48a1916a2f830e332, type: 3}
       propertyPath: m_Name
       value: MutantFish
