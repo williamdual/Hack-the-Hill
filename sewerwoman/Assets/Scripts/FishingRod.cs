@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FishingRod : MonoBehaviour
@@ -62,6 +63,11 @@ public class FishingRod : MonoBehaviour
 
    void throwObject()
     {
+        if(clickedObj.CompareTag("MutantFish"))
+        {
+            float power = Math.Abs(dragStart.x - dragEnd.x) + Math.Abs(dragStart.y - dragEnd.y);
+            clickedObj.GetComponent<MutantFish>(); //Add .throwFish(dragEnd, power) or whatever to the end
+        }
         //throw the game object along the directon vector created from dragstart to dragend if it can be thrown, else losen it if its throwable but stuck, else nothing
     }
 }
