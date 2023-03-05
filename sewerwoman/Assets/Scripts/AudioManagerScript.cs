@@ -32,9 +32,11 @@ public class AudioManagerScript : MonoBehaviour
         switch (name)
         {
             case "BeamCharge":
-                selected = BeamCharge; break;
+                selected = BeamCharge;
+                selected[0].volume = 0.1f; break;
             case "BeamFire":
-                selected = BeamFire; break;
+                selected = BeamFire;
+                selected[0].volume = 0.2f; break;
             case "Garbage":
                 selected = Garbage; break;
             case "FishHappy":
@@ -49,6 +51,7 @@ public class AudioManagerScript : MonoBehaviour
                 selected = Victory;
                 Debug.Log("Sound not found"); break;
         }
+
         selected[Random.Range(0, selected.Count()-1)].Play();
         /*
         if (!AudioPlayer.isPlaying)

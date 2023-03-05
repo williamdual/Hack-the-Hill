@@ -150,6 +150,22 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[1].y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 331488080, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 32768
+      objectReference: {fileID: 0}
+    - target: {fileID: 331488080, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 331488080, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 331488080, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1475178739797555015, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
       propertyPath: m_Name
       value: Player
@@ -391,15 +407,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6935657048672510431, guid: c8b06d3f903289043b8551719a08363b, type: 3}
       propertyPath: timeItTakesToAim
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6935657048672510431, guid: c8b06d3f903289043b8551719a08363b, type: 3}
       propertyPath: timeItTakesToShoot
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 6935657048672510431, guid: c8b06d3f903289043b8551719a08363b, type: 3}
       propertyPath: timeItTakesToCooldown
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8b06d3f903289043b8551719a08363b, type: 3}
