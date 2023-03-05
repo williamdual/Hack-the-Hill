@@ -78,7 +78,7 @@ public class AnglerScript : MonoBehaviour
         burstCooldown += Time.deltaTime;
         if (burstCooldown < burstTimeToCooldown) return;
 
-        for (int i = 0; i < bulletsPerSecond*8; i++)
+        for (int i = 0; i < bulletsPerSecond*3; i++)
         {
             Vector3 bulletPath = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, -0.2f), 0).normalized;
             GameObject bull = Instantiate(bullet, transform.position, transform.rotation);

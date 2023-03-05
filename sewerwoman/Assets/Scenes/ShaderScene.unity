@@ -243,6 +243,18 @@ PrefabInstance:
       propertyPath: bullet
       value: 
       objectReference: {fileID: 3136974166368685408, guid: 423667ed0e0752149a9e36d908235f4f, type: 3}
+    - target: {fileID: 6935657048672510431, guid: c8b06d3f903289043b8551719a08363b, type: 3}
+      propertyPath: bulletSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6935657048672510431, guid: c8b06d3f903289043b8551719a08363b, type: 3}
+      propertyPath: bulletDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6935657048672510431, guid: c8b06d3f903289043b8551719a08363b, type: 3}
+      propertyPath: bulletsPerSecond
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8b06d3f903289043b8551719a08363b, type: 3}
 --- !u!4 &255829657 stripped
