@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class FishingRod : MonoBehaviour
 {
-    public float rodPower = 1f;
+    [SerializeField] float rodPowerCap = 1.0f;
     bool dragging = false;
     Vector2 dragStart;
     Vector2 mousePos;
@@ -76,13 +76,14 @@ public class FishingRod : MonoBehaviour
    void throwObject()
     {
         float power = Math.Abs(dragStart.x - dragEnd.x) + Math.Abs(dragStart.y - dragEnd.y);
+        float cappedPower = power > rodPowerCap ? rodPowerCap : power;
         Vector2 direction = dragEnd - dragStart;
         if(clickedObj.CompareTag("MutantFish"))
         {
-            clickedObj.GetComponent<MutantFish>().fished_behavior(direction, power); //Add .throwFish(dragEnd, power) or whatever to the end
+            clickedObj.GetComponent<MutantFish>().fished_behavior(direction, cappedPower); //Add .throwFish(dragEnd, power) or whatever to the end
         }
         else if (clickedObj.CompareTag("Trash")) {
-            clickedObj.GetComponent<Trash>().fished_behavior(direction, power, 17.0f);
+            clickedObj.GetComponent<Trash>().fished_behavior(direction, cappedPower, 17.0f);
         }
         //throw the game object along the directon vector created from dragstart to dragend if it can be thrown, else losen it if its throwable but stuck, else nothing
     }
