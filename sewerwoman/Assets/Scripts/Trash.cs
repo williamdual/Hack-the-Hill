@@ -16,7 +16,7 @@ public class Trash : MonoBehaviour
     }
 
     public IEnumerator beginShake() {
-
+        yield return new WaitForSeconds(0);
     }
 
     void shake() {

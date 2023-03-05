@@ -26,13 +26,7 @@ public class MutantFish : MonoBehaviour
         isStunned = false;
         isCharging = false;
         isPreparing = false;
-<<<<<<< Updated upstream
-        target = GameObject.FindGameObjectsWithTag("Player")[0];
-=======
-        if (target == null) {
-            target = GameObject.FindWithTag("Player");
-        }
->>>>>>> Stashed changes
+        target = GameObject.FindWithTag("Player");
     }
 
     void angry_move() {
