@@ -45,17 +45,19 @@ public class MutantFish : MonoBehaviour
             Vector2 direction = lineToTarget.normalized;
             velocity = direction * speed * Time.fixedDeltaTime;
             m_kbody.MovePosition(m_kbody.position + velocity);
+            GetComponent<SpriteRenderer>().flipX = (transform.position.x > target.transform.position.x);
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().flipX = GetComponent<SpriteRenderer>().flipX;
             /*
-            if(direction.x > 0){
-                if(direction.y > 0){
+            if(direction.x > target.transform.position.x){
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+            }
+            else{
+                if(direction.y > target.transform.position.y){
                     transform.rotation = Quaternion.Euler(transform.rotation.x, 180, Mathf.Abs(transform.rotation.z) * -1);
                 }
                 else{
                     transform.rotation = Quaternion.Euler(transform.rotation.x, 180, Mathf.Abs(transform.rotation.z));
                 }
-            }
-            else{
-                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
             }
             */
             m_kbody.MoveRotation(Quaternion.LookRotation(direction));
@@ -110,6 +112,7 @@ public class MutantFish : MonoBehaviour
         }
         else if(other.gameObject.tag == "Water" && !happy){
             happy = true;
+            GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
             isStunned = false;
             isCharging = false;
@@ -137,6 +140,7 @@ public class MutantFish : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Water" && !happy){
             happy = true;
+            GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
             isStunned = false;
             isCharging = false;
