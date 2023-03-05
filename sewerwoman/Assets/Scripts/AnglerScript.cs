@@ -164,10 +164,8 @@ public class AnglerScript : MonoBehaviour
         hit = Physics2D.Raycast(shootingPoint, positionToShoot - shootingPoint, 1000.0f, mask);
         if (hit.collider != null)
         {
-            Debug.Log("shoot");
             if (hit.transform.gameObject.CompareTag("Player")) 
             {
-                Debug.Log("shot");
                 player.GetComponent<PlayerMovement>().TakeDamage(beamDamage);
             }
         }
