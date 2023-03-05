@@ -42,11 +42,10 @@ public class MutantFish : MonoBehaviour
         m_kbody.isKinematic = true;
         m_kbody.velocity = Vector2.zero;
     }
-
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     { 
         if(other.gameObject.tag == "Player"){
-            other.gameObject.GetComponent<PlayerMovement>().Hit(velocity.normalized);
+            other.gameObject.GetComponent<PlayerMovement>().Hit(transform.right.normalized);
         }
     }
 

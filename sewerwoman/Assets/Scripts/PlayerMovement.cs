@@ -41,14 +41,12 @@ public class PlayerMovement : MonoBehaviour
     public void Hit(Vector2 direction){
         TakeDamage(10);
         gettingPushed = true;
-        rb.isKinematic = false;
         rb.AddForce(new Vector3(direction.x, direction.y, 0) * 4, ForceMode2D.Impulse);
         StartCoroutine("ChangeToKinematic");
     }
 
     private IEnumerator ChangeToKinematic(){
         yield return new WaitForSeconds(1);
-        rb.isKinematic = true;
         gettingPushed = false;
     }
 
