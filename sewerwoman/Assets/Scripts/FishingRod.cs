@@ -19,8 +19,8 @@ public class FishingRod : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lineR.startWidth = 0.2f;
-        lineR.endWidth = 0.4f;
+        lineR.startWidth = 0.0f;
+        lineR.endWidth = 0.0f;
         lineR.startColor = Color.red;
         lineR.endColor = Color.red;
         lineR.positionCount = 2;

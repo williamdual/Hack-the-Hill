@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rodPowerCap: 1
-  radius: 5
+  radius: 7
   lineR: {fileID: 331488080}
 --- !u!120 &331488080
 LineRenderer:
@@ -174,7 +174,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 0, b: 0, a: 1}
       key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -596,4 +596,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lineR: {fileID: 7828116516493417324}
-  radius: 5
+  radius: 7
