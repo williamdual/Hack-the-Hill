@@ -41,9 +41,9 @@ public class PlayerMovement : MonoBehaviour
     public void Hit(Vector2 direction){
         if(!gettingPushed){
             //rb.isKinematic = true;
-            TakeDamage(80);
+            TakeDamage(5);
             gettingPushed = true;
-            rb.AddForce(new Vector3(direction.x, direction.y, 0) * 4, ForceMode2D.Impulse);
+            rb.AddForce(new Vector3(direction.x, direction.y, 0) * 0.5f, ForceMode2D.Impulse);
             StartCoroutine("ChangeToDynamic");
         }
     }
@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int amount){
         currentHealth -= amount;
+        GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("PlayerDamage");
         if(currentHealth <= 0){
             Die();
             return;

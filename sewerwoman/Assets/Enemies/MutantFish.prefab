@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4511285549654166718}
   - component: {fileID: 6319426112301018509}
   - component: {fileID: 5613004781265409101}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MutantFishSprite
   m_TagString: MutantFish
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 5953344951904023544}
   - component: {fileID: 8234793974809646127}
   - component: {fileID: 6396506056518400808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MutantFish
   m_TagString: MutantFish
   m_Icon: {fileID: 0}

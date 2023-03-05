@@ -74,6 +74,7 @@ public class MutantFish : MonoBehaviour
         velocity = direction * speed * chargefactor * Time.fixedDeltaTime;
         isPreparing = false;
         isCharging = true;
+        GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("FishHit");
         StartCoroutine(endCharge());
 
     }
@@ -87,6 +88,7 @@ public class MutantFish : MonoBehaviour
         m_kbody.angularVelocity = 0.0f;
         m_kbody.velocity = Vector2.zero;
         isCharging = false;
+        //GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("FishHit");
     }
 
     void happy_move() {
@@ -112,6 +114,7 @@ public class MutantFish : MonoBehaviour
         }
         else if(other.gameObject.tag == "Water" && !happy){
             happy = true;
+            GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("FishHappy");
             GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
             isStunned = false;
@@ -140,6 +143,7 @@ public class MutantFish : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Water" && !happy){
             happy = true;
+            GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("FishHappy");
             GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
             isStunned = false;

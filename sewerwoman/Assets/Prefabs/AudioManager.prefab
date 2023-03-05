@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e65d85f8e635f4faecb8ff70916327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioPlayer: {fileID: 0}
+  AudioPlayer: {fileID: 4093371795721989618}
   BeamCharge:
   - {fileID: 8300000, guid: 707511e5e0fa9f74cafbc48ca45b06bf, type: 3}
   BeamFire:

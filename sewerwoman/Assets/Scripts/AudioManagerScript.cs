@@ -52,9 +52,12 @@ public class AudioManagerScript : MonoBehaviour
                 Debug.Log("Sound not found"); break;
         }
         AudioPlayer.clip = selected[Random.Range(0, selected.Count()-1)];
+        /*
         if (!AudioPlayer.isPlaying)
         {
             AudioPlayer.Play();
         }
+        */
+        AudioPlayer.Play();
     }
 }
