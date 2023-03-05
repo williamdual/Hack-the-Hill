@@ -26,12 +26,12 @@ public class MutantFish : MonoBehaviour
         isStunned = false;
         isCharging = false;
         isPreparing = false;
+        target = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
     void angry_move() {
         Vector2 targetPos = target.transform.position;
         if (Vector2.Distance(targetPos, (Vector2)transform.position) <= chargedist) {
-            Debug.Log(Vector2.Distance(targetPos, (Vector2)transform.position));
             StartCoroutine(beginCharge(targetPos));
             m_kbody.isKinematic = true;
             isPreparing = true;
@@ -41,6 +41,19 @@ public class MutantFish : MonoBehaviour
             Vector2 direction = lineToTarget.normalized;
             velocity = direction * speed * Time.fixedDeltaTime;
             m_kbody.MovePosition(m_kbody.position + velocity);
+            /*
+            if(direction.x > 0){
+                if(direction.y > 0){
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, 180, Mathf.Abs(transform.rotation.z) * -1);
+                }
+                else{
+                    transform.rotation = Quaternion.Euler(transform.rotation.x, 180, Mathf.Abs(transform.rotation.z));
+                }
+            }
+            else{
+                transform.rotation = Quaternion.Euler(transform.rotation.x, 0, transform.rotation.z);
+            }
+            */
             m_kbody.MoveRotation(Quaternion.LookRotation(direction));
         }
     }

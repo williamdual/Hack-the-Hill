@@ -14,6 +14,6 @@ public class RadioactiveScript : MonoBehaviour
     }
 
     public void UpdateValue(float newValue){
-        material.SetFloat("_RadioactiveAmount", 1 - newValue);
+        material.SetFloat("_RadioactiveAmount", (1 - newValue) / 1.85f);
     }
 }
