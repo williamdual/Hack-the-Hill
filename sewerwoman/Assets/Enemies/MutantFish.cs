@@ -7,6 +7,7 @@ public class MutantFish : MonoBehaviour
     //physical aspects
     [SerializeField] int speed = 5;
     Vector2 velocity;
+    bool isStunned;
     //references
     Rigidbody2D m_kbody;
     [SerializeField] GameObject target; //Whatever mutant fish is targetting
@@ -16,6 +17,7 @@ public class MutantFish : MonoBehaviour
     {
         velocity = new Vector2(0, 0);
         m_kbody = GetComponent<Rigidbody2D>();
+        isStunned = false;
     }
 
     void move() {
@@ -27,12 +29,16 @@ public class MutantFish : MonoBehaviour
     }
 
     public void fished_behavior(Vector2 direction, int magnitude) {
-        m_kbody.isKinematic = false; 
-        
+        isStunned = true;
+        m_kbody.isKinematic = false;
+        m_kbody.AddForce(direction * magnitude, ForceMode2D.Impulse);
+        StartCoroutine(after_fished_behavior());
     }
 
     private IEnumerator after_fished_behavior() {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(0.5f);
+        isStunned = false;
+        m_kbody.isKinematic = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -45,6 +51,8 @@ public class MutantFish : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        move();
+        if (!isStunned) {
+            move();
+        } 
     }
 }

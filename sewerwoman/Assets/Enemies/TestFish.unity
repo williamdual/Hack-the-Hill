@@ -478,6 +478,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 205531609}
+    - target: {fileID: 6305617465573454065, guid: a30d65b0164583a48a1916a2f830e332, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8292623079158368396, guid: a30d65b0164583a48a1916a2f830e332, type: 3}
       propertyPath: m_Name
       value: MutantFish
