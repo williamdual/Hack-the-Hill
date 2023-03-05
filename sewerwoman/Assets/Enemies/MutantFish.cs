@@ -21,12 +21,16 @@ public class MutantFish : MonoBehaviour
         isStunned = false;
     }
 
-    void move() {
+    void angry_move() {
         Vector2 targetPos = target.transform.position;
         Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
         velocity = direction * speed * Time.fixedDeltaTime;
         m_kbody.MovePosition(m_kbody.position + velocity);
         m_kbody.MoveRotation(Quaternion.LookRotation(direction));
+    }
+
+    void happy_move() {
+        
     }
 
     public void fished_behavior(Vector2 direction, float magnitude) {
@@ -53,7 +57,7 @@ public class MutantFish : MonoBehaviour
     void FixedUpdate()
     {
         if (!isStunned) {
-            move();
+            angry_move();
         } 
     }
 }
