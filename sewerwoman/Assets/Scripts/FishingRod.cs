@@ -9,11 +9,10 @@ public class FishingRod : MonoBehaviour
 {
     public float rodPower = 1f;
     bool dragging = false;
-    Vector3 dragStart;
-    Vector3 dragEnd;
+    Vector2 dragStart;
+    Vector2 dragEnd;
     public LineRenderer lineR;
-    Ray ray;
-    RaycastHit raycastHit;
+    RaycastHit2D raycastHit;
     GameObject clickedObj = null;
 
     // Start is called before the first frame update
@@ -34,17 +33,16 @@ public class FishingRod : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && !dragging) //left mouse button clicked
         {
             dragStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            dragStart.z = 0f;
             lineR.SetPosition(0, dragStart);
             lineR.SetPosition(1, dragStart);
             dragging = true;
             //Object getting stuff
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit, 100f))
+            raycastHit = Physics2D.Raycast(dragStart, Vector2.zero);
+            if (raycastHit.collider != null)
             {
-                if (raycastHit.transform.gameObject.CompareTag("MutantFish"))
+                if (raycastHit.collider.gameObject.CompareTag("MutantFish"))
                 {
-                    clickedObj = raycastHit.transform.gameObject; 
+                    clickedObj = raycastHit.collider.gameObject; 
                 }
                 else{
                     clickedObj = null;
@@ -54,7 +52,6 @@ public class FishingRod : MonoBehaviour
         if(dragging)
         {
             dragEnd = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            dragEnd.z = 0f;
             lineR.SetPosition(1, dragEnd);
         }
         if(Input.GetMouseButtonUp(0) && dragging) //left mouse button reelesed
@@ -70,9 +67,11 @@ public class FishingRod : MonoBehaviour
     {
         if(clickedObj.CompareTag("MutantFish"))
         {
+            Debug.Log("Fish");
             float power = Math.Abs(dragStart.x - dragEnd.x) + Math.Abs(dragStart.y - dragEnd.y);
+            Vector2 direction = dragEnd - dragStart;
             if(clickedObj != null){
-            clickedObj.GetComponent<MutantFish>(); //Add .throwFish(dragEnd, power) or whatever to the end
+                clickedObj.GetComponent<MutantFish>().fished_behavior(direction, power); //Add .throwFish(dragEnd, power) or whatever to the end
             }
         }
         //throw the game object along the directon vector created from dragstart to dragend if it can be thrown, else losen it if its throwable but stuck, else nothing

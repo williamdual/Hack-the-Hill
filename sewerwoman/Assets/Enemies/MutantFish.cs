@@ -17,6 +17,7 @@ public class MutantFish : MonoBehaviour
     {
         velocity = new Vector2(0, 0);
         m_kbody = GetComponent<Rigidbody2D>();
+        m_kbody.gravityScale = 0;
         isStunned = false;
     }
 
@@ -28,7 +29,7 @@ public class MutantFish : MonoBehaviour
         m_kbody.MoveRotation(Quaternion.LookRotation(direction));
     }
 
-    public void fished_behavior(Vector2 direction, int magnitude) {
+    public void fished_behavior(Vector2 direction, float magnitude) {
         isStunned = true;
         m_kbody.isKinematic = false;
         m_kbody.AddForce(direction * magnitude, ForceMode2D.Impulse);
