@@ -20,8 +20,8 @@ public class FishingLine : MonoBehaviour
         lineR.endColor = Color.gray;
         lineR.positionCount = 2;
         parentbody = GetComponentInParent<Rigidbody2D>();
-        offsetPos = new Vector2(0.409f, 0.375f) * 2;
-        offsetNeg = new Vector2(-0.409f, 0.375f) * 2;
+        offsetPos = new Vector2(0.409f, 0.375f);
+        offsetNeg = new Vector2(-0.409f, 0.375f);
     }
 
     public 

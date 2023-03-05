@@ -6,10 +6,12 @@ public class Trash : MonoBehaviour
 {
     [SerializeField] GameObject particles;
     [SerializeField] float health = 100.0f;
+    Vector2 orgPos;
     bool isShaking;
     Rigidbody2D m_kbody;
     SpriteRenderer render;
     private Color alpha;
+    [SerializeField] int myIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,8 @@ public class Trash : MonoBehaviour
         m_kbody = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
         alpha = render.color;
+        GameObject.FindWithTag("GameController").GetComponent<GameManager>().AddGarbage(gameObject.transform, myIndex);
+        orgPos = m_kbody.position;
     }
 
     public void fished_behavior(Vector2 direction, float magnitude, float damage) {
@@ -53,8 +57,19 @@ public class Trash : MonoBehaviour
             }
             else {
                 //Debug.Log("down");
-                m_kbody.MovePosition(m_kbody.position + downvector * Time.deltaTime);
+                StartCoroutine(returnToPlace(0.3f, shakeAmount));
             }
+            yield return null;
+        }
+    }
+
+    private IEnumerator returnToPlace(float time, float shakeAmount) {
+        float counter = 0;
+        float rotateup = time/2;
+
+        while (counter < time) {
+            counter += Time.deltaTime;
+            m_kbody.MovePosition(m_kbody.position + (orgPos - m_kbody.position) * shakeAmount * Time.deltaTime);
             yield return null;
         }
     }
@@ -67,6 +82,7 @@ public class Trash : MonoBehaviour
             alpha.a = Mathf.Lerp(1, 0, counter / time);
             render.color = alpha;
             if (alpha.a <= 1/12) {
+                GameObject.FindWithTag("GameController").GetComponent<GameManager>().RemoveGarbage(myIndex);
                 Destroy(gameObject);
             }
             yield return null;
