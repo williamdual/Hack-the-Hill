@@ -44,13 +44,13 @@ public class PlayerMovement : MonoBehaviour
             //rb.isKinematic = true;
             TakeDamage(5);
             gettingPushed = true;
-            rb.AddForce(new Vector3(direction.x, direction.y, 0) * 0.5f, ForceMode2D.Impulse);
+            rb.AddForce(new Vector3(direction.x, direction.y, 0).normalized * 1f, ForceMode2D.Impulse);
             StartCoroutine("ChangeToDynamic");
         }
     }
 
     private IEnumerator ChangeToDynamic(){
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         gettingPushed = false;
         //rb.isKinematic = false;
     }

@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterParticles: {fileID: 5911930379316993465, guid: 44610abf1bd16467996fea760948038b, type: 3}
   speed: 5
-  chargefactor: 2.5
+  chargefactor: 1.8
   chargedist: 2.5
   target: {fileID: 0}
 --- !u!212 &8234793974809646127
