@@ -26,6 +26,19 @@ public class MutantFish : MonoBehaviour
         m_kbody.MoveRotation(Quaternion.LookRotation(direction));
     }
 
+    public void fished_behavior() {
+
+    }
+
+    private IEnumerator after_fished_behavior() {
+        yield return new WaitForSeconds(3);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Debug");
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
