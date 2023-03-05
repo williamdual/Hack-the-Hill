@@ -301,6 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a30d65b0164583a48a1916a2f830e332, type: 3}
+8766d4cb2c3660c52d8ad015b6982de873c6c760
 --- !u!1 &1077921925
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,18 +427,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1475178738276571615, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
-      propertyPath: lineR
-      value: 
-      objectReference: {fileID: 331488080}
-    - target: {fileID: 1475178739797555012, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1475178739797555013, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1475178739797555015, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
       propertyPath: m_Name
       value: Player
