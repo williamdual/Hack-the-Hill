@@ -59,6 +59,7 @@ public class FishingRod : MonoBehaviour
                 throwObject();
             }
             dragging = false;
+            clickedObj = null;
         }
     }
 
