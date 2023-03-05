@@ -36,8 +36,10 @@ public class MutantFish : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("Debug");
+    { 
+        if(other.gameObject.tag == "Player"){
+            other.gameObject.GetComponent<PlayerMovement>().Hit(velocity.normalized);
+        }
     }
 
     // Update is called once per frame

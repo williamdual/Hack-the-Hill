@@ -9,6 +9,11 @@ public class PlayerMovement : MonoBehaviour
     GameObject player;
     public Rigidbody2D rb;
 
+    private bool gettingPushed = false;
+
+    public bool isHittingGarbage;
+    public bool depositedFish;
+
     Vector2 movement;
     void Start()
     {
@@ -24,6 +29,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if(!gettingPushed){
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    public void Hit(Vector2 direction){
+        gettingPushed = true;
+        Debug.Log(direction.x + ", " + direction.y);
+        rb.isKinematic = false;
+        rb.AddForce(new Vector3(direction.x, direction.y, 0) * 10, ForceMode2D.Impulse);
     }
 }
