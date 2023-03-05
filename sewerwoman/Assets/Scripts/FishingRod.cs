@@ -12,7 +12,6 @@ public class FishingRod : MonoBehaviour
     Vector2 dragStart;
     Vector2 dragEnd;
     public LineRenderer lineR;
-    RaycastHit2D raycastHit;
     GameObject clickedObj = null;
 
     // Start is called before the first frame update
@@ -37,7 +36,7 @@ public class FishingRod : MonoBehaviour
             lineR.SetPosition(1, dragStart);
             dragging = true;
             //Object getting stuff
-            raycastHit = Physics2D.Raycast(dragStart, Vector2.zero);
+            RaycastHit2D raycastHit = Physics2D.Raycast(dragStart, Vector2.zero);
             if (raycastHit.collider != null)
             {
                 if (raycastHit.collider.gameObject.CompareTag("MutantFish"))

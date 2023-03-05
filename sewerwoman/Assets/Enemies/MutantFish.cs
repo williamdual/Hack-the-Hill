@@ -40,6 +40,7 @@ public class MutantFish : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         isStunned = false;
         m_kbody.isKinematic = true;
+        m_kbody.velocity = Vector2.zero;
     }
 
     void OnTriggerEnter2D(Collider2D other)
