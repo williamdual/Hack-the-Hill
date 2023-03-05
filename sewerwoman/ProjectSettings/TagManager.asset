@@ -8,6 +8,7 @@ TagManager:
   - Water
   - Angler
   - Bullet
+  - Trash
   layers:
   - Default
   - TransparentFX

@@ -39,7 +39,7 @@ public class FishingRod : MonoBehaviour
             RaycastHit2D raycastHit = Physics2D.Raycast(dragStart, Vector2.zero);
             if (raycastHit.collider != null)
             {
-                if (raycastHit.collider.gameObject.CompareTag("MutantFish"))
+                if (raycastHit.collider.gameObject.CompareTag("MutantFish") || raycastHit.collider.gameObject.CompareTag("Trash"))
                 {
                     clickedObj = raycastHit.collider.gameObject; 
                 }
@@ -67,14 +67,14 @@ public class FishingRod : MonoBehaviour
 
    void throwObject()
     {
+        float power = Math.Abs(dragStart.x - dragEnd.x) + Math.Abs(dragStart.y - dragEnd.y);
+        Vector2 direction = dragEnd - dragStart;
         if(clickedObj.CompareTag("MutantFish"))
         {
-            Debug.Log("Fish");
-            float power = Math.Abs(dragStart.x - dragEnd.x) + Math.Abs(dragStart.y - dragEnd.y);
-            Vector2 direction = dragEnd - dragStart;
-            if(clickedObj != null){
-                clickedObj.GetComponent<MutantFish>().fished_behavior(direction, power); //Add .throwFish(dragEnd, power) or whatever to the end
-            }
+            clickedObj.GetComponent<MutantFish>().fished_behavior(direction, power); //Add .throwFish(dragEnd, power) or whatever to the end
+        }
+        else if (clickedObj.CompareTag("Trash")) {
+            clickedObj.GetComponent<Trash>().fished_behavior(direction, power, 17.0f);
         }
         //throw the game object along the directon vector created from dragstart to dragend if it can be thrown, else losen it if its throwable but stuck, else nothing
     }

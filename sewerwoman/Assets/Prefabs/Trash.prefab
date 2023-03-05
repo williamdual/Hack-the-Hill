@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4414291180784134039}
   m_Layer: 0
   m_Name: Trash
-  m_TagString: Untagged
+  m_TagString: Trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,3 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4239b8248913bfd42b38624419fdf8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
