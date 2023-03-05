@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14475c47e6a5b174a873f49542de198f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rodPower: 1
+  rodPowerCap: 1
   lineR: {fileID: 331488080}
 --- !u!120 &331488080
 LineRenderer:
@@ -330,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178be14599e54a442a7ec2e64fc4a2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles: {fileID: 1574391972238035454, guid: a01949a5d190b48fdb51f731b9538960, type: 3}
   maxHealth: 100
   moveSpeed: 5
   rb: {fileID: 1475178739797555012}

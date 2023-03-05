@@ -5,6 +5,7 @@ using UnityEngine;
 public class MutantFish : MonoBehaviour
 {
     //physical aspects
+    [SerializeField] GameObject waterParticles;
     [SerializeField] int speed = 5;
     [SerializeField] float chargefactor = 2.5f;
     Vector2 velocity;
@@ -114,6 +115,8 @@ public class MutantFish : MonoBehaviour
         }
         else if(other.gameObject.tag == "Water" && !happy){
             happy = true;
+            GameObject parts = Instantiate(waterParticles, transform.position, Quaternion.identity);
+            Destroy(parts, 1);
             GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("FishHappy");
             GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<CapsuleCollider2D>().enabled = false;
@@ -143,6 +146,8 @@ public class MutantFish : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.tag == "Water" && !happy){
             happy = true;
+            GameObject parts = Instantiate(waterParticles, transform.position, Quaternion.identity);
+            Destroy(parts, 1);
             GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("FishHappy");
             GetComponent<SpriteRenderer>().flipX = false;
             GetComponent<CapsuleCollider2D>().enabled = false;

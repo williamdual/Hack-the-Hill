@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2340fb78c3712c4b9b744699dcc9e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterParticles: {fileID: 5911930379316993465, guid: 44610abf1bd16467996fea760948038b, type: 3}
   speed: 5
   chargefactor: 2.5
   chargedist: 2.5

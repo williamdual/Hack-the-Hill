@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] GameObject particles;
     private int currentHealth;
     public int maxHealth;
 
@@ -56,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int amount){
         currentHealth -= amount;
+        GameObject parts = Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(parts, 1);
         GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("PlayerDamage");
         if(currentHealth <= 0){
             Die();

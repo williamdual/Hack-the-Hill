@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class AnglerScript : MonoBehaviour
 {
+    [SerializeField] GameObject chargeBeamParticles;
+    [SerializeField] GameObject shootBeamParticles;
+    [SerializeField] GameObject shootParticles;
     GameObject player;
 
     //Bullet stuff
@@ -63,6 +66,8 @@ public class AnglerScript : MonoBehaviour
             Vector3 bulletPath = new Vector3(Random.Range(-1f,1f), Random.Range(-1f,-0.2f),0).normalized;
             GameObject bull = Instantiate(bullet, transform.position, transform.rotation);
             bull.transform.position = shootingPoint; //+ new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
+            GameObject parts = Instantiate(shootParticles, bull.gameObject.transform.position, Quaternion.identity);
+            Destroy(parts, 1);
             bull.GetComponent<Bullet>().initalize(bulletDamage, bulletSpeed, bulletPath);
             curTime = 0;
         }
@@ -78,6 +83,8 @@ public class AnglerScript : MonoBehaviour
             Vector3 bulletPath = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, -0.2f), 0).normalized;
             GameObject bull = Instantiate(bullet, transform.position, transform.rotation);
             bull.transform.position = shootingPoint; //+ new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
+            GameObject parts = Instantiate(shootParticles, bull.gameObject.transform.position, Quaternion.identity);
+            Destroy(parts, 1);
             bull.GetComponent<Bullet>().initalize(bulletDamage, bulletSpeed, bulletPath);
         }
         burstCooldown = 0.0f;
@@ -104,6 +111,7 @@ public class AnglerScript : MonoBehaviour
         }
         if (aimingBeam)
         {
+            transform.GetChild(1).gameObject.SetActive(true);
             timeToAim -= Time.deltaTime;
             positionToShoot = player.transform.position;
             lineR.SetPosition(1, positionToShoot);
@@ -117,9 +125,14 @@ public class AnglerScript : MonoBehaviour
         }
         else if (shootingBeam)
         {
+            transform.GetChild(1).gameObject.SetActive(false);
             timeToShoot -= Time.deltaTime;
             if (timeToShoot <= 0)
             {
+                //here
+                GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("BeamFire");
+                GameObject parts = Instantiate(shootBeamParticles, transform.GetChild(1).gameObject.transform.position, Quaternion.identity);
+                Destroy(parts, 1);
                 lineR.startWidth = thickBeam;
                 lineR.endWidth = thickBeam;
                 shootingBeam = false;
@@ -139,6 +152,7 @@ public class AnglerScript : MonoBehaviour
     {
         timeToAim = timeItTakesToAim;
         aimingBeam = true;
+        GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("BeamCharge");
         lineR.SetPosition(0, shootingPoint);
     }
     void ShootBeam()

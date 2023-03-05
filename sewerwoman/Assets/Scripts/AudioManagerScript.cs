@@ -7,19 +7,17 @@ using UnityEngine;
 
 public class AudioManagerScript : MonoBehaviour
 {
-    public AudioSource AudioPlayer;
-
-    public AudioClip[] BeamCharge;
-    public AudioClip[] BeamFire;
-    public AudioClip[] Garbage;
-    public AudioClip[] FishHappy;
-    public AudioClip[] FishHit;
-    public AudioClip[] PlayerDamage;
-    public AudioClip[] Victory;
+    public AudioSource[] BeamCharge;
+    public AudioSource[] BeamFire;
+    public AudioSource[] Garbage;
+    public AudioSource[] FishHappy;
+    public AudioSource[] FishHit;
+    public AudioSource[] PlayerDamage;
+    public AudioSource[] Victory;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -30,7 +28,7 @@ public class AudioManagerScript : MonoBehaviour
 
     public void PlaySound(string name)
     {
-        AudioClip[] selected;
+        AudioSource[] selected;
         switch (name)
         {
             case "BeamCharge":
@@ -51,13 +49,12 @@ public class AudioManagerScript : MonoBehaviour
                 selected = Victory;
                 Debug.Log("Sound not found"); break;
         }
-        AudioPlayer.clip = selected[Random.Range(0, selected.Count()-1)];
+        selected[Random.Range(0, selected.Count()-1)].Play();
         /*
         if (!AudioPlayer.isPlaying)
         {
             AudioPlayer.Play();
         }
         */
-        AudioPlayer.Play();
     }
 }
