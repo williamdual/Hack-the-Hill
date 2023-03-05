@@ -26,7 +26,13 @@ public class MutantFish : MonoBehaviour
         isStunned = false;
         isCharging = false;
         isPreparing = false;
+<<<<<<< Updated upstream
         target = GameObject.FindGameObjectsWithTag("Player")[0];
+=======
+        if (target == null) {
+            target = GameObject.FindWithTag("Player");
+        }
+>>>>>>> Stashed changes
     }
 
     void angry_move() {
@@ -98,6 +104,7 @@ public class MutantFish : MonoBehaviour
         isStunned = false;
         m_kbody.velocity = Vector2.zero;
     }
+    
     void OnCollisionEnter2D(Collision2D other)
     { 
         if(other.gameObject.tag == "Player"){

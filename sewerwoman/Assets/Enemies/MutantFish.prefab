@@ -166,10 +166,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2340fb78c3712c4b9b744699dcc9e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   speed: 10
   chargefactor: 2.5
   chargedist: 2.5
   target: {fileID: 1475178739797555015, guid: 7adef8ef53bf4574ab7bbce8742eea27, type: 3}
+=======
+  speed: 3
+  chargefactor: 3.5
+  chargedist: 5
+  target: {fileID: 0}
+>>>>>>> Stashed changes
 --- !u!212 &8234793974809646127
 SpriteRenderer:
   m_ObjectHideFlags: 0
