@@ -218,6 +218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MutantWater
       objectReference: {fileID: 0}
+    - target: {fileID: 3136974166368685408, guid: 423667ed0e0752149a9e36d908235f4f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3136974166368685410, guid: 423667ed0e0752149a9e36d908235f4f, type: 3}
       propertyPath: m_RootOrder
       value: 1

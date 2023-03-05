@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3136974166368685413}
   - component: {fileID: 3136974166368685415}
   - component: {fileID: 7402252482613503618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MutantWater
   m_TagString: Bullet
   m_Icon: {fileID: 0}

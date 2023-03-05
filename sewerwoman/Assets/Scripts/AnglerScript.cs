@@ -160,11 +160,14 @@ public class AnglerScript : MonoBehaviour
         lineR.SetPosition(1, (positionToShoot - shootingPoint) * 5);
         lineR.startColor = Color.green;
         lineR.endColor = Color.green;
-        hit = Physics2D.Raycast(shootingPoint, positionToShoot - shootingPoint);
+        int mask = LayerMask.GetMask("Player");
+        hit = Physics2D.Raycast(shootingPoint, positionToShoot - shootingPoint, 1000.0f, mask);
         if (hit.collider != null)
         {
+            Debug.Log("shoot");
             if (hit.transform.gameObject.CompareTag("Player")) 
             {
+                Debug.Log("shot");
                 player.GetComponent<PlayerMovement>().TakeDamage(beamDamage);
             }
         }
