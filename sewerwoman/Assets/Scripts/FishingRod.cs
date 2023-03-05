@@ -20,7 +20,7 @@ public class FishingRod : MonoBehaviour
     {
         lineR.startWidth = 0.2f;
         lineR.endWidth = 0.4f;
-        lineR.startColor = Color.green;
+        lineR.startColor = Color.red;
         lineR.endColor = Color.red;
         lineR.positionCount = 2;
         //lineR.useWorldSpace = true;

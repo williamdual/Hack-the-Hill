@@ -13,6 +13,8 @@ public class AnglerScript : MonoBehaviour
     public int bulletDamage = 1;
     public int bulletSpeed = 10;
     float curTime;
+    float burstCooldown = 0f;
+    float burstTimeToCooldown = 8.0f;
 
     //Beam stuff
     public int beamDamage = 20;
@@ -46,25 +48,41 @@ public class AnglerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        BulletLogic();
+        BurstAttack();
+        SprayAttack();
         checkBeam();
         BeamLogic();
 
     }
 
-    void BulletLogic()
+    void SprayAttack()
     {   
         curTime += Time.deltaTime;
         if (curTime > 1.0f / bulletsPerSecond)
         {
-            Debug.Log(curTime);
-            Vector3 bulletPath = new Vector3(Random.Range(-1f,1f), Random.Range(-1f,-0.2f),0);
+            Vector3 bulletPath = new Vector3(Random.Range(-1f,1f), Random.Range(-1f,-0.2f),0).normalized;
             GameObject bull = Instantiate(bullet, transform.position, transform.rotation);
-            bull.transform.position = shootingPoint + new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
+            bull.transform.position = shootingPoint; //+ new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
             bull.GetComponent<Bullet>().initalize(bulletDamage, bulletSpeed, bulletPath);
             curTime = 0;
         }
     }
+
+    void BurstAttack()
+    {
+        burstCooldown += Time.deltaTime;
+        if (burstCooldown < burstTimeToCooldown) return;
+
+        for (int i = 0; i < bulletsPerSecond*8; i++)
+        {
+            Vector3 bulletPath = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, -0.2f), 0).normalized;
+            GameObject bull = Instantiate(bullet, transform.position, transform.rotation);
+            bull.transform.position = shootingPoint; //+ new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
+            bull.GetComponent<Bullet>().initalize(bulletDamage, bulletSpeed, bulletPath);
+        }
+        burstCooldown = 0.0f;
+    }
+
     void BeamLogic()
     {
         if(beamOnCooldown)
@@ -72,9 +90,12 @@ public class AnglerScript : MonoBehaviour
             timeToCooldown -= Time.deltaTime;
             if(timeToCooldown < timeItTakesToCooldown * 0.7)
             {
+                lineR.startColor= Color.red;
                 lineR.endColor = Color.red;
                 lineR.positionCount = 0;
                 lineR.positionCount = 2;
+                lineR.startWidth = thinBeam;
+                lineR.endWidth = thinBeam;
             }
             if (timeToCooldown <= 0f)
             {
@@ -99,6 +120,7 @@ public class AnglerScript : MonoBehaviour
             timeToShoot -= Time.deltaTime;
             if (timeToShoot <= 0)
             {
+                lineR.startWidth = thickBeam;
                 lineR.endWidth = thickBeam;
                 shootingBeam = false;
                 ShootBeam();
