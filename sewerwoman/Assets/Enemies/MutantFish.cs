@@ -35,7 +35,6 @@ public class MutantFish : MonoBehaviour
 
     public void fished_behavior(Vector2 direction, float magnitude) {
         isStunned = true;
-        m_kbody.isKinematic = false;
         m_kbody.AddForce(direction * magnitude, ForceMode2D.Impulse);
         StartCoroutine(after_fished_behavior());
     }
@@ -43,7 +42,6 @@ public class MutantFish : MonoBehaviour
     private IEnumerator after_fished_behavior() {
         yield return new WaitForSeconds(0.5f);
         isStunned = false;
-        m_kbody.isKinematic = true;
         m_kbody.velocity = Vector2.zero;
     }
     void OnCollisionEnter2D(Collision2D other)

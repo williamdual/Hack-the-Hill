@@ -40,16 +40,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Hit(Vector2 direction){
         if(!gettingPushed){
+            //rb.isKinematic = true;
             TakeDamage(10);
             gettingPushed = true;
             rb.AddForce(new Vector3(direction.x, direction.y, 0) * 4, ForceMode2D.Impulse);
-            StartCoroutine("ChangeToKinematic");
+            StartCoroutine("ChangeToDynamic");
         }
     }
 
-    private IEnumerator ChangeToKinematic(){
+    private IEnumerator ChangeToDynamic(){
         yield return new WaitForSeconds(1);
         gettingPushed = false;
+        //rb.isKinematic = false;
     }
 
     public void TakeDamage(int amount){
