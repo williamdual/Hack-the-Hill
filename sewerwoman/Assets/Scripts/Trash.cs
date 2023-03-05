@@ -10,6 +10,7 @@ public class Trash : MonoBehaviour
     Rigidbody2D m_kbody;
     SpriteRenderer render;
     private Color alpha;
+    [SerializeField] int myIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class Trash : MonoBehaviour
         m_kbody = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
         alpha = render.color;
+        GameObject.FindWithTag("GameController").GetComponent<GameManager>().AddGarbage(gameObject.transform, myIndex);
     }
 
     public void fished_behavior(Vector2 direction, float magnitude, float damage) {
@@ -67,6 +69,7 @@ public class Trash : MonoBehaviour
             alpha.a = Mathf.Lerp(1, 0, counter / time);
             render.color = alpha;
             if (alpha.a <= 1/12) {
+                GameObject.FindWithTag("GameController").GetComponent<GameManager>().RemoveGarbage(myIndex);
                 Destroy(gameObject);
             }
             yield return null;
