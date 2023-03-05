@@ -57,19 +57,24 @@ public class GameManager : MonoBehaviour
     }
 
     private IEnumerator Win(){
-        won = true;
-        GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("Victory");
-        yield return new WaitForSeconds(1.5f);
-        ui.SetActive(true);
-        loseText.SetActive(false);
-        GameObject.FindWithTag("Angler").gameObject.SetActive(false);
-        //pop up UI, play win sound
+        if(!won){
+            won = true;
+            GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("Victory");
+            yield return new WaitForSeconds(1.5f);
+            ui.SetActive(true);
+            loseText.SetActive(false);
+            GameObject.FindWithTag("Angler").gameObject.SetActive(false);
+            //pop up UI, play win sound
+        }
     }
 
     public void Lose(){
-        won = true;
-        //GameObject.FindWithTag("Angler").gameObject.SetActive(false);
-        ui.SetActive(true);
-        winText.SetActive(false);
+        if(!won){
+            won = true;
+            //GameObject.FindWithTag("Angler").gameObject.SetActive(false);
+            ui.SetActive(true);
+            winText.SetActive(false);   
+        }
+        
     }
 }
