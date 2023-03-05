@@ -20,8 +20,10 @@ public class MutantFish : MonoBehaviour
 
     void move() {
         Vector2 targetPos = target.transform.position;
-        velocity = (targetPos - (Vector2)transform.position).normalized;
-        m_kbody.MovePosition(m_kbody.position + velocity * speed * Time.fixedDeltaTime);
+        Vector2 direction = (targetPos - (Vector2)transform.position).normalized;
+        velocity = direction * speed * Time.fixedDeltaTime;
+        m_kbody.MovePosition(m_kbody.position + velocity);
+        m_kbody.MoveRotation(Quaternion.LookRotation(direction));
     }
 
     // Update is called once per frame
