@@ -8,6 +8,7 @@ using UnityEngine;
 public class FishingRod : MonoBehaviour
 {
     [SerializeField] float rodPowerCap = 1.0f;
+    [SerializeField] int radius = 5;
     bool dragging = false;
     Vector2 dragStart;
     Vector2 mousePos;
@@ -37,7 +38,7 @@ public class FishingRod : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         //Our rod casting stuff
-        if(Input.GetMouseButtonDown(0) && !dragging) //left mouse button clicked
+        if((Input.GetMouseButtonDown(0) && !dragging) && Vector2.Distance(mousePos, GetComponentInParent<Rigidbody2D>().position) <=  radius) //left mouse button clicked
         {
             dragStart = mousePos;
             lineR.SetPosition(0, dragStart);
