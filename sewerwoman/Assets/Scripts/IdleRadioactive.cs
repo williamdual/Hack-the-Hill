@@ -26,11 +26,21 @@ public class IdleRadioactive : MonoBehaviour
         
         if (decreasing)
         {
-            t -= Time.deltaTime;
+            if(t >= .45 && t <= .6){
+                t -= Time.deltaTime * 0.33f;
+            }
+            else{
+                t -= Time.deltaTime;
+            }
         }
         else
         {
-            t += Time.deltaTime;
+            if(t >= .45 && t <= .6){
+                t += Time.deltaTime * 0.33f;
+            }
+            else{
+                t += Time.deltaTime;
+            }
         }
 
         if(t <= 0 && decreasing)
