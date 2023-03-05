@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MutantFish
   - Water
+  - Angler
+  - Bullet
   layers:
   - Default
   - TransparentFX

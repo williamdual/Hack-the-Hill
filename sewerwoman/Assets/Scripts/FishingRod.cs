@@ -55,7 +55,9 @@ public class FishingRod : MonoBehaviour
         }
         if(Input.GetMouseButtonUp(0) && dragging) //left mouse button reelesed
         {
-            if(clickedObj != null){
+            lineR.positionCount = 0;
+            lineR.positionCount = 2;
+            if (clickedObj != null){
                 throwObject();
             }
             dragging = false;
