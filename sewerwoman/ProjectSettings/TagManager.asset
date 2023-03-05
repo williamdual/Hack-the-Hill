@@ -9,6 +9,8 @@ TagManager:
   - Angler
   - Bullet
   - Trash
+  - Wall
+  - AudioPlayer
   layers:
   - Default
   - TransparentFX
