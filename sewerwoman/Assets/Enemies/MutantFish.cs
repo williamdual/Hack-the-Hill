@@ -199,10 +199,10 @@ public class MutantFish : MonoBehaviour
             velocity = new Vector2(1, Random.Range(-.9f, 1));
         }
         
-        if(transform.position.y >= -3.4){
+        if(transform.position.y >= -3.7){
             velocity.y = Random.Range(-0.6f, -1.2f);
         }
-        else if(transform.position.y <= -4.6){
+        else if(transform.position.y <= -4.55){
             velocity.y = Random.Range(0.6f, 1.2f);
         }
         

@@ -63,7 +63,7 @@ public class AnglerScript : MonoBehaviour
         curTime += Time.deltaTime;
         if (curTime > 1.0f / bulletsPerSecond)
         {
-            Vector3 bulletPath = new Vector3(Random.Range(-1f,1f), Random.Range(-1f,-0.2f),0).normalized;
+            Vector3 bulletPath = new Vector3(Random.Range(-1f,1f), Random.Range(-1f, 0.2f),0).normalized;
             GameObject bull = Instantiate(bullet, transform.position, transform.rotation);
             bull.transform.position = shootingPoint; //+ new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
             GameObject parts = Instantiate(shootParticles, bull.gameObject.transform.position, Quaternion.identity);
@@ -78,9 +78,9 @@ public class AnglerScript : MonoBehaviour
         burstCooldown += Time.deltaTime;
         if (burstCooldown < burstTimeToCooldown) return;
 
-        for (int i = 0; i < bulletsPerSecond*3; i++)
+        for (int i = 0; i < bulletsPerSecond*4; i++)
         {
-            Vector3 bulletPath = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, -0.2f), 0).normalized;
+            Vector3 bulletPath = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, .2f), 0).normalized;
             GameObject bull = Instantiate(bullet, transform.position, transform.rotation);
             bull.transform.position = shootingPoint; //+ new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
             GameObject parts = Instantiate(shootParticles, bull.gameObject.transform.position, Quaternion.identity);

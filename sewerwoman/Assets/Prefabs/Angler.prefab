@@ -298,9 +298,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBeamParticles: {fileID: 5693883887117302648, guid: 2e05cb3fcb9aa42fb9dbaf116c7a4df4, type: 3}
   shootBeamParticles: {fileID: 8618808487704998865, guid: 8a1a108522e8846b1ab2c304ef04e9ef, type: 3}
-  shootParticles: {fileID: 1574391972238035454, guid: a01949a5d190b48fdb51f731b9538960, type: 3}
+  shootParticles: {fileID: 596011567332009622, guid: 915132d9d09f449b88255de2a0524590, type: 3}
   bullet: {fileID: 0}
-  bulletsPerSecond: 5
+  bulletsPerSecond: 7
   bulletDamage: 1
   bulletSpeed: 10
   beamDamage: 20
