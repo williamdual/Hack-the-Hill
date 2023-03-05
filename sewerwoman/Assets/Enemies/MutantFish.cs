@@ -26,8 +26,9 @@ public class MutantFish : MonoBehaviour
         m_kbody.MoveRotation(Quaternion.LookRotation(direction));
     }
 
-    public void fished_behavior() {
-
+    public void fished_behavior(Vector2 direction, int magnitude) {
+        m_kbody.isKinematic = false; 
+        
     }
 
     private IEnumerator after_fished_behavior() {
