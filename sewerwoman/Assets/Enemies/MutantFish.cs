@@ -13,9 +13,13 @@ public class MutantFish : MonoBehaviour
     bool isStunned;
     bool isCharging;
     bool isPreparing;
+    bool goingLeft = true;
+    float changeTimer;
     //references
     Rigidbody2D m_kbody;
     [SerializeField] GameObject target; //Whatever mutant fish is targetting
+
+    bool happy = false;
 
     // Start is called before the first frame update
     void Start()
@@ -104,16 +108,100 @@ public class MutantFish : MonoBehaviour
         if(other.gameObject.tag == "Player"){
             other.gameObject.GetComponent<PlayerMovement>().Hit(transform.right.normalized);
         }
+        else if(other.gameObject.tag == "Water" && !happy){
+            happy = true;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            isStunned = false;
+            isCharging = false;
+            isPreparing = false;
+            changeTimer = Time.time + (Random.Range(1, 5));
+            if(goingLeft){
+                LookLeft();
+            }
+            else{
+                LookRight();
+            }
+            Destroy(transform.GetChild(0).gameObject);
+        }
+        if(other.gameObject.tag == "Wall"){
+            goingLeft = !goingLeft;
+            if(goingLeft){
+                LookLeft();
+            }
+            else{
+                LookRight();
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.tag == "Water" && !happy){
+            happy = true;
+            GetComponent<CapsuleCollider2D>().enabled = false;
+            isStunned = false;
+            isCharging = false;
+            isPreparing = false;
+            changeTimer = Time.time + (Random.Range(1, 5));
+            if(goingLeft){
+                LookLeft();
+            }
+            else{
+                LookRight();
+            }
+            Destroy(transform.GetChild(0).gameObject);
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isStunned && !isCharging && !isPreparing) {
+        if (!isStunned && !isCharging && !isPreparing && !happy) {
             angry_move();
         } 
         else if (isCharging) {
             charge();
         }
+        else if(happy){
+            moveWater();
+        }
+    }
+
+    void moveWater(){
+        if(Time.time >= changeTimer){
+            goingLeft = !goingLeft;
+            if(goingLeft){
+                LookLeft();
+            }
+            else{
+                LookRight();
+            }
+            changeTimer = Time.time + (Random.Range(1, 5));
+        }
+        if(goingLeft){
+            //velocity = new Vector2(Mathf.Sin(Time.time * Random.Range(0.1f, 1) * -1), Mathf.Sin(Time.time * Random.Range(-0.6f, 0.6f)));
+            velocity = new Vector2(-1, Random.Range(-.9f, 1));
+        }
+        else{
+            //velocity = new Vector2(Mathf.Sin(Time.time * Random.Range(0.1f, 1)), Mathf.Sin(Time.time * Random.Range(-0.6f, 0.6f)));
+            velocity = new Vector2(1, Random.Range(-.9f, 1));
+        }
+        
+        if(transform.position.y >= -3.4){
+            velocity.y = Random.Range(-0.6f, -1.2f);
+        }
+        else if(transform.position.y <= -4.6){
+            velocity.y = Random.Range(0.6f, 1.2f);
+        }
+        
+        velocity = velocity * Random.Range(1, 2) * Time.fixedDeltaTime;
+        m_kbody.MovePosition(m_kbody.position + velocity);
+    }
+
+    void LookLeft(){
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+
+    void LookRight(){
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 }

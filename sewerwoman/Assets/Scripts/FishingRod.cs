@@ -10,6 +10,7 @@ public class FishingRod : MonoBehaviour
     public float rodPower = 1f;
     bool dragging = false;
     Vector2 dragStart;
+    Vector2 mousePos;
     Vector2 dragEnd;
     public LineRenderer lineR;
     GameObject clickedObj = null;
@@ -28,10 +29,17 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if(mousePos.x >= transform.parent.gameObject.transform.position.x){
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else{
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
         //Our rod casting stuff
         if(Input.GetMouseButtonDown(0) && !dragging) //left mouse button clicked
         {
-            dragStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            dragStart = mousePos;
             lineR.SetPosition(0, dragStart);
             lineR.SetPosition(1, dragStart);
             dragging = true;
