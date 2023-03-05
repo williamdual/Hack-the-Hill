@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] int[] illegalIndices;
     float spawnTimer;
+    [SerializeField] GameObject ui;
+    [SerializeField] GameObject loseText;
+    [SerializeField] GameObject winText;
 
     private bool won = false;
 
@@ -55,8 +58,18 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Win(){
         won = true;
-        yield return new WaitForSeconds(0);
         GameObject.FindWithTag("AudioPlayer").GetComponent<AudioManagerScript>().PlaySound("Victory");
+        yield return new WaitForSeconds(1.5f);
+        ui.SetActive(true);
+        loseText.SetActive(false);
+        GameObject.FindWithTag("Angler").gameObject.SetActive(false);
         //pop up UI, play win sound
+    }
+
+    public void Lose(){
+        won = true;
+        //GameObject.FindWithTag("Angler").gameObject.SetActive(false);
+        ui.SetActive(true);
+        winText.SetActive(false);
     }
 }

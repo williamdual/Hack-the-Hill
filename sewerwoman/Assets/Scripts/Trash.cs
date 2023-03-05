@@ -18,7 +18,7 @@ public class Trash : MonoBehaviour
     {
         isShaking = false;
         m_kbody = GetComponent<Rigidbody2D>();
-        render = GetComponent<SpriteRenderer>();
+        render = gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         alpha = render.color;
         GameObject.FindWithTag("GameController").GetComponent<GameManager>().AddGarbage(gameObject.transform, myIndex);
         orgPos = m_kbody.position;

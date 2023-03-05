@@ -73,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Die(){
+        GameObject.FindWithTag("GameController").GetComponent<GameManager>().Lose();
         Destroy(gameObject);
     }
 }
