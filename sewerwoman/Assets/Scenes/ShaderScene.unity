@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6935657048672510431, guid: c8b06d3f903289043b8551719a08363b, type: 3}
       propertyPath: bulletsPerSecond
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8b06d3f903289043b8551719a08363b, type: 3}
@@ -787,7 +787,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414291180784134039, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: health
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4414291180784134039, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: myIndex
@@ -1052,7 +1052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414291180784134039, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: health
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4414291180784134039, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: myIndex
@@ -1647,7 +1647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414291180784134039, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: health
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4414291180784134039, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: myIndex
@@ -1858,7 +1858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4414291180784134039, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: health
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5536489627840900176, guid: 477f54df498992e469decbaca732cf05, type: 3}
       propertyPath: m_Name
@@ -1964,7 +1964,7 @@ PrefabInstance:
       objectReference: {fileID: 1721783169}
     - target: {fileID: 1969815683595355626, guid: 57e8a657654324ef6ac5925967c47f42, type: 3}
       propertyPath: spawnInterval
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1969815683595355626, guid: 57e8a657654324ef6ac5925967c47f42, type: 3}
       propertyPath: spawnPoints.Array.size
