@@ -23,3 +23,5 @@ Our submission for Hack the Hill 2023.
   conservation efforts. The purpose of this in the real world is the same as your primary
   objective in the game, survival through helping the environment.
 </p>
+
+![Screenshot 2023-03-06 143549](https://user-images.githubusercontent.com/100625812/223875220-335712d6-e3f5-4e6a-a271-7860b461491e.png)
