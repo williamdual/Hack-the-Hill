@@ -65,7 +65,7 @@ public class AnglerScript : MonoBehaviour
         {
             Vector3 bulletPath = new Vector3(Random.Range(-1f,1f), Random.Range(-1f, 0.2f),0).normalized;
             GameObject bull = Instantiate(bullet, transform.position, transform.rotation);
-            bull.transform.position = shootingPoint; //+ new Vector3(Random.Range(-2.5f, 2.5f), 0, 0);
+            bull.transform.position = shootingPoint; 
             GameObject parts = Instantiate(shootParticles, bull.gameObject.transform.position, Quaternion.identity);
             Destroy(parts, 1);
             bull.GetComponent<Bullet>().initalize(bulletDamage, bulletSpeed, bulletPath);
